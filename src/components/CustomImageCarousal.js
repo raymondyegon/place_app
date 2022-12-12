@@ -76,7 +76,7 @@ export const CustomImageCarousal = ({ data, autoPlay }) => {
                         <View style={{ width: SIZE }} key={index}>
                             <Animated.View >
 
-                                <CardImage img={item.image} locName={item.name} location={item.location} rating={item.rating} />
+                                <CardImage img={item.image} locName={item.name} location={item.location} rating={item.rating} detailsPage={() => navigation.navigate('PlaceDetailsPage', { place: item })} />
 
                             </Animated.View>
                         </View>

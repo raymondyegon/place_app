@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen } from "../features/home/HomeScreen";
+import { PlaceDetailsScreen } from "../features/home/PlaceDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ export const HomeStack = () => {
             }}
         >
             <Stack.Screen name="Home" component={HomeScreen} />
-
+            <Stack.Screen name="PlaceDetailsPage" component={PlaceDetailsScreen} />
 
 
         </Stack.Navigator>
