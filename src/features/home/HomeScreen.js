@@ -8,8 +8,9 @@ import { CustomImageCarousal } from "../../components/CustomImageCarousal";
 import { useGetLocationMutation, useGetPlacesMutation } from "../../services/PlacesService";
 import { useSelector } from "react-redux";
 import { selectCurrentLocation, selectCurrentPlaces } from "./PlacesSlice";
-import { useEffect } from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useEffect, useCallback } from "react";
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { dimensions } from "../../utils/Dimensions";
 
 
 export const HomeScreen = () => {
@@ -23,10 +24,24 @@ export const HomeScreen = () => {
         getPlaces();
     }, []);
 
+    useFocusEffect(
+        useCallback(() => {
+            const fetchData = async () => {
+                await getLocation();
+                await getPlaces();
+            };
+
+            fetchData();
+
+        },
+            []
+        )
+    );
+
 
     return (
         <SafeAreaView style={styles.container}>
-            <View>
+            <View style={{ backgroundColor: 'black', height: dimensions.screenHeight, width: dimensions.screenWidth }} >
                 <View style={styles.upper}>
                     <View style={styles.top}>
 
@@ -65,12 +80,13 @@ export const HomeScreen = () => {
                                 showsHorizontalScrollIndicator={false}
                                 keyExtractor={(item) => item.id}
                                 data={placesData}
+
                                 ItemSeparatorComponent={
                                     Platform.OS !== 'android' &&
                                     (({ highlighted }) => (
                                         <View
                                             style={[
-                                                { marginLeft: 10 }
+                                                { margin: 10 }
                                             ]}
                                         />
                                     ))
