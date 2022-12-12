@@ -10,6 +10,7 @@ export const Input = ({ title, placeholder, autoComplete, value, ...rest }) => {
                 placeholder={placeholder}
                 style={styles.input}
                 autoComplete={autoComplete}
+                placeholderTextColor='grey'
                 value={value}
                 secureTextEntry={title === 'Password' ? true : false}
                 autoCapitalize='none'
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
         height: 0.08 * dimensions.screenHeight,
         padding: 10,
         fontSize: 15,
+        color: 'black',
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,

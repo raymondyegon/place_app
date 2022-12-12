@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         fontWeight: '700',
         paddingTop: 10,
         marginBottom: 10,
-        // color: "black",
+        color: "black",
     },
     image: {
         height: '35%',
